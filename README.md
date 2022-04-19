@@ -1,4 +1,4 @@
-Hi, this is the backend assignment/challenge for fun
+Hi, this is a simple backend server assignment/challenge for fun
 
 ## Introduction
 
