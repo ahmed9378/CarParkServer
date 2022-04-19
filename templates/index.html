@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page Title</title>
+    <style>
+    body {
+      margin: 3%;
+    } 
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 50%;
+    }
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 6px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    .numberCircle {
+        border-radius: 50%;
+        width: 55px;
+        height: 36px;
+        padding: 8px;
+
+        background: #fff;
+        border: 2px solid {{fuleGrageColor}};
+        color: {{fuleGrageColor}};
+        text-align: center;
+
+        font: 32px Arial, sans-serif;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>CAR PARKING SYSTEM</h1>
+<br>
+    <form action="/parkcar" method="post">
+      <label for= "CarNumber">Car Number: </label>
+      <input type="text" name="CarNumber">   </input>
+      <input type="submit" value="park"></input>
+    </form>
+<br>
+    <form action="/unparkcar" method="post">
+    <label for= "SlotNumber">Slot Number: </label>
+      <input type="text" name="SlotNumber"> </input>
+      <input type="submit" value="unPark"></input>
+    </form>
+<br>
+    <form action="/parkinfo" method="post">
+    <label for= "SNumber">Slot Number: </label>
+      <input type="text" name="SNumber"> </input>
+      <input type="submit" value="parkInfo"></input>
+    </form>
+
+    <p>{{park_info}}</p>
+    <p>{{error_msg}}</P>
+<br>
+<div class="numberCircle">{{avilableSlots}}</div>
+
+<br>
+<h3>Park Slot Info table</h3>
+    <table>
+      <tr>
+        <th>Slot No.</th>
+        <th>Car No.</th>
+        <th>Park Time</th>
+      </tr>
+      {% for item in garageInfo %}
+      <tr>
+        <th>{{ item.split(',')[0] }}</th>
+        <th>{{ item.split(',')[1] }}</th>
+        <th>{{ item.split(',')[2] }}</th>
+      </tr>
+      {% endfor %}
+      
+    </table>
+    
+  </body>
+</html>
